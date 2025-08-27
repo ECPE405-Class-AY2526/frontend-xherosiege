@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router";
 import LandingPage from "./pages/LandingPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
+import toast from "react-hot-toast";
 
 const App = () => {
   return (

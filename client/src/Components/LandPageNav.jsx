@@ -11,9 +11,9 @@ const LandPageBox = () => {
             </div>
 
             <div className='flex items-center space-x-4'>
-                <span className='text-2xl'>🔍</span>
-                <div className='w-10 h-10 rounded-full bg-black flex items-center justify-center'>
-                </div>
+                <input type="text" placeholder="Search" className="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+/>                <div className='w-10 h-10 rounded-full bg-black flex items-center justify-center'>
+                  </div>
             </div>
         </div>
     </header>

@@ -2,6 +2,8 @@ import React from "react";
 import LandPageNav from "../Components/LandPageNav";
 import LandPageParagrah from "../Components/LandPageParagrah";
 import LandPagePicture from "../Components/LandPagePicture";
+import LandPageCenter from "../Components/LandPageCenter";
+
 
 const LandingPage = () => {
   return (
@@ -11,6 +13,7 @@ const LandingPage = () => {
         <LandPageParagrah />
         <LandPagePicture />
       </div>
+      <LandPageCenter />
     </div>
   );
 };

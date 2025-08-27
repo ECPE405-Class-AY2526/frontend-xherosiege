@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router'
 
 const LandPageBox = () => {
   return (
@@ -8,12 +9,15 @@ const LandPageBox = () => {
                 <button className="text-black font-medium">Home</button>
                 <button className="text-black font-medium">Dashboard</button>
                 <button className='text-black font-medium'>About us</button>
+                <input type="text" placeholder="Search" className="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"/>
             </div>
 
             <div className='flex items-center space-x-4'>
-                <input type="text" placeholder="Search" className="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-/>                <div className='w-10 h-10 rounded-full bg-black flex items-center justify-center'>
-                  </div>
+              <Link to ='/login'>
+                <button className='bg-green-600 text-black rounded-full px-6 py-2 font-medium'>Sign up</button>
+              </Link>
+                 <div className='w-10 h-10 rounded-full bg-black flex items-center justify-center'>
+                </div>
             </div>
         </div>
     </header>

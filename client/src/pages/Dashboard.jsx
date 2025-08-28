@@ -1,7 +1,26 @@
 import React from "react";
+import { Routes, Route } from "react-router";
+import DashboardNavbar from "../Components/DashboardNavbar";
+import DashboardPage1 from "./DashboardPage1";
+import DashboardPage2 from "./DashboardPage2";
+import DashboardPage3 from "./DashboardPage3";
+import DashboardPage4 from "./DashboardPage4";
 
 const Dashboard = () => {
-  return <div>Dashboard</div>;
+  return (
+    <div className="flex h-screen">
+      <DashboardNavbar />
+      <main className="flex-1 bg-base-100">
+        <Routes>
+          <Route path="/" element={<DashboardPage1 />} />
+          <Route path="1" element={<DashboardPage1 />} />
+          <Route path="2" element={<DashboardPage2 />} />
+          <Route path="3" element={<DashboardPage3 />} />
+          <Route path="4" element={<DashboardPage4 />} />
+        </Routes>
+      </main>
+    </div>
+  );
 };
 
 export default Dashboard;

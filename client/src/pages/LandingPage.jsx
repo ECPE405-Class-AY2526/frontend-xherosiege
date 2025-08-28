@@ -3,6 +3,7 @@ import LandPageNav from "../Components/LandPageNav";
 import LandPageParagrah from "../Components/LandPageParagrah";
 import LandPagePicture from "../Components/LandPagePicture";
 import LandPageCenter from "../Components/LandPageCenter";
+import LandPageBottom from "../Components/LandPageBottom";
 
 
 const LandingPage = () => {
@@ -14,6 +15,7 @@ const LandingPage = () => {
         <LandPagePicture />
       </div>
       <LandPageCenter />
+      <LandPageBottom />
     </div>
   );
 };

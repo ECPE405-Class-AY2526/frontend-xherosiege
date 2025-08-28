@@ -3,8 +3,8 @@ import { Link } from 'react-router'
 
 const LandPageParagrah = () => {
   return (
-    <div className ='flex-1 flex flex-col items-center justify-start'>
-        <h1 className='text-2xl font-bold  mb-0 text-center'>What are vape detectors and<br/>how do they impact us?</h1>
+    <div className ='flex-1 flex flex-col items-left justify-start'>
+        <h1 className='text-2xl font-bold  mb-0 text-left'>What are vape detectors and how do they impact us?</h1>
         <p className='text-base text-left mt-3 mb-5'>
           E-cigarettes, or vapes, have rapidly grown in popularity, especially among young people, due to their sleek designs, 
           wide variety of flavors, and accessibility. While they are often marketed as a safer alternative to traditional cigarettes, 

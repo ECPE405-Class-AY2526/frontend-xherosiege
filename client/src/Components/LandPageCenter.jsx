@@ -6,46 +6,48 @@ const LandPageCenter = () => {
   
   <div className="card bg-base-100 w-96 shadow-sm">
     <div className="card-body">
-      <h2 className="card-title">Card Title 1</h2>
-      <p>
-        A card component has a figure, a body part, and inside body there are
-        title and actions parts
+      <h2 className="card-title">History of vapes and vape detectors</h2>
+      <p class>
+        Learn more on the invention of vape detectors and how they have evolved over time.
       </p>
     </div>
     <figure>
       <img
-        src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+        src="src/Assets/timeline-of-vape.webp"
         alt="Shoes"
+            className="w-full h-60 object-cover rounded-md"
       />
     </figure>
   </div>
 
   <div className="card bg-base-100 w-96 shadow-sm">
     <div className="card-body">
-      <h2 className="card-title">Card Title 2</h2>
+      <h2 className="card-title">Trends in vape and vape detection</h2>
       <p>
-        Another card with the same structure but placed beside the first one.
+        Look into the latest news and trends about vape detectors.
       </p>
     </div>
     <figure>
       <img
-        src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+        src="src/Assets/infograph-teens-vaping.jpg"
         alt="Shoes"
+            className="w-full h-60 object-cover rounded-md"
       />
     </figure>
   </div>
 
   <div className="card bg-base-100 w-96 shadow-sm">
     <div className="card-body">
-      <h2 className="card-title">Card Title 2</h2>
+      <h2 className="card-title">How our vape detector is made</h2>
       <p>
-        Another card with the same structure but placed beside the first one.
+        Discover the technology and processes behind our innovative vape detection system.
       </p>
     </div>
     <figure>
       <img
-        src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+        src="src/Assets/VapeDetectorIMG2.jpg"
         alt="Shoes"
+            className="w-full h-60 object-cover rounded-md"
       />
     </figure>
   </div>

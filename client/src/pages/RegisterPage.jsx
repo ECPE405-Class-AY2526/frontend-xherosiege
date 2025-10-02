@@ -1,25 +1,33 @@
-import React, { useState, useContext } from "react";
-import { AuthContext } from "../utils/AuthContext";
-import { Link, useNavigate } from "react-router";
+import React, { useState } from "react";
 import toast from "react-hot-toast";
+import { Link, useNavigate } from "react-router";
+import axios from "axios";
+import api from "../utils/axios";
 
-const LoginPage = () => {
+const RegisterPage = () => {
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const { login, loading } = useContext(AuthContext);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
+  const handleSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
-    const success = await login(email, password);
-    if (!success) {
-      //setError("Invalid credentials");
-      toast.error("Invalid credentials");
-    } else {
-      setError("");
-      toast.success("Login successful!");
-      navigate("/dashboard");
+    try {
+      await api.post("/users/register", {
+        username,
+        email,
+        password,
+      });
+      toast.success("Registration successful! Please log in.");
+      navigate("/login");
+    } catch (err) {
+      toast.error(
+        err?.response?.data?.message || "Registration failed. Please try again."
+      );
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -32,12 +40,20 @@ const LoginPage = () => {
         [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_80%,transparent_100%)]"
       />
       <form
-        onSubmit={handleLogin}
+        onSubmit={handleSubmit}
         className="relative z-10 bg-slate-900 bg-opacity-80 rounded-xl shadow-xl p-8 flex flex-col gap-6 w-full max-w-md"
       >
         <h2 className="text-3xl font-bold text-white text-center mb-2">
-          Login
+          Register
         </h2>
+        <input
+          type="text"
+          placeholder="Username"
+          className="px-4 py-3 rounded-lg bg-slate-800 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-400"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          required
+        />
         <input
           type="email"
           placeholder="Email"
@@ -54,14 +70,13 @@ const LoginPage = () => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        {error && <div className="text-error text-center mb-2">{error}</div>}
         <button type="submit" className="btn btn-primary" disabled={loading}>
-          {loading ? "Logging in..." : "Login"}
+          Register
         </button>
         <div className="text-center mt-4 text-slate-400">
-          Don't have an account?{" "}
-          <Link to="/register" className="text-teal-400 underline">
-            Register here
+          Already have an account?{" "}
+          <Link to="/login" className="text-teal-400 underline">
+            Login here
           </Link>
         </div>
       </form>
@@ -69,4 +84,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default RegisterPage;

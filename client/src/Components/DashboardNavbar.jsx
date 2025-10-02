@@ -1,8 +1,16 @@
-import React from "react";
-import { Link, useLocation } from "react-router";
+import React, { useContext } from "react";
+import { Link, useLocation, useNavigate } from "react-router";
+import { AuthContext } from "../utils/AuthContext";
 
 const DashboardNavbar = () => {
   const { pathname } = useLocation();
+  const { logout } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  };
 
   const btnClass = (path) =>
     `btn w-11/12 mx-auto ${pathname === path ? "btn-active btn-outline" : ""}`;
@@ -33,9 +41,12 @@ const DashboardNavbar = () => {
       </nav>
       {/* Bottom section: Logout button */}
       <div className="mb-6">
-        <Link to="/login">
-          <button className="btn btn-error w-11/12 mx-auto flex">Logout</button>
-        </Link>
+        <button
+          className="btn btn-error w-11/12 mx-auto flex"
+          onClick={handleLogout}
+        >
+          Logout
+        </button>
       </div>
     </aside>
   );

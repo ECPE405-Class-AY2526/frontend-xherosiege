@@ -1,10 +1,10 @@
 import React from "react";
 import { Routes, Route } from "react-router";
 import DashboardNavbar from "../Components/DashboardNavbar";
-import DashboardPage1 from "./DashboardPage1";
-import DashboardPage2 from "./DashboardPage2";
-import DashboardPage3 from "./DashboardPage3";
-import DashboardPage4 from "./DashboardPage4";
+import DashboardPage1 from "./DashboardPages/DashboardPage1";
+import DashboardPage2 from "./DashboardPages/DashboardPage2";
+import DashboardPage3 from "./DashboardPages/DashboardPage3";
+import DashboardPage4 from "./DashboardPages/DashboardPage4";
 
 const Dashboard = () => {
   return (

@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link, useLocation, useNavigate } from "react-router";
-import { AuthContext } from "../utils/AuthContext";
+import useAuthStore from "../utils/authStore.js";
+import { isDesktop } from "react-device-detect";
 
 const DashboardNavbar = () => {
   const { pathname } = useLocation();
-  const { logout } = useContext(AuthContext);
+  const { logout, user } = useAuthStore();
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -15,6 +16,8 @@ const DashboardNavbar = () => {
   const btnClass = (path) =>
     `btn w-11/12 mx-auto ${pathname === path ? "btn-active btn-outline" : ""}`;
 
+  const showUsersButton = user?.role === "admin" && isDesktop;
+
   return (
     <aside className="h-screen w-64 bg-base-200 flex flex-col justify-between shadow-lg">
       {/* Logo/Header section */}
@@ -23,6 +26,11 @@ const DashboardNavbar = () => {
         <span className="text-xl font-bold text-base-content">
           Placeholder Title
         </span>
+        {user && (
+          <span className="text-sm text-base-content/70 mt-1">
+            Welcome, {user.username}
+          </span>
+        )}
       </div>
       {/* Top section: 4 placeholder buttons */}
       <nav className="flex flex-col gap-2 mt-2">
@@ -38,6 +46,11 @@ const DashboardNavbar = () => {
         <Link to="/dashboard/4" className={btnClass("/dashboard/4")}>
           Placeholder 4
         </Link>
+        {showUsersButton && (
+          <Link to="/dashboard/users" className={btnClass("/dashboard/users")}>
+            Users
+          </Link>
+        )}
       </nav>
       {/* Bottom section: Logout button */}
       <div className="mb-6">

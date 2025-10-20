@@ -1,13 +1,13 @@
-import React, { useState, useContext } from "react";
-import { AuthContext } from "../utils/AuthContext";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router";
 import toast from "react-hot-toast";
+import useAuthStore from "../utils/authStore";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const { login, loading } = useContext(AuthContext);
+  const { login, loading } = useAuthStore();
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -20,6 +20,7 @@ const LoginPage = () => {
       setError("");
       toast.success("Login successful!");
       navigate("/dashboard");
+      // you may declare or place the role in this line. once you have it from the backend
     }
   };
 

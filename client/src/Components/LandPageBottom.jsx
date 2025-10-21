@@ -5,7 +5,7 @@ const LandPageBottom = () => {
     <div><footer className="footer sm:footer-horizontal bg-base-200 text-base-content p-10 mt-20">
   <nav>
     <h6 className="footer-title">Services</h6>
-    <a className="link link-hover">Vape Detection Solutions</a>
+    <a className="link link-hover">Soil Fertility Solutions</a>
     <a className="link link-hover">Installation & Integration</a>
     <a className="link link-hover">Maintenance & Support</a>
     <a className="link link-hover">Data Analytics & Reporting</a>

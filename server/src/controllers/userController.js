@@ -65,7 +65,7 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc    Get user details
+// @desc    Get current user
 // @route   GET /api/users/me
 // @access  Private
 const getMe = asyncHandler(async (req, res) => {
@@ -73,9 +73,82 @@ const getMe = asyncHandler(async (req, res) => {
   res.status(200).json({ id: _id, username, email, role });
 });
 
+// @desc    Get all users (admin only)
+// @route   GET /api/users
+// @access  Private/Admin
+const getAllUsers = asyncHandler(async (req, res) => {
+  const users = await User.find({}).select("-password");
+  res.status(200).json(users);
+});
+
+// @desc    Delete user (admin only)
+// @route   DELETE /api/users/:id
+// @access  Private/Admin
+const deleteUser = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.params.id);
+
+  if (!user) {
+    res.status(404).json({ message: "User not found" });
+    return;
+  }
+
+  await User.findByIdAndDelete(req.params.id);
+  res.status(200).json({ message: "User deleted successfully" });
+});
+
+// @desc    Update user (admin only)
+// @route   PUT /api/users/:id
+// @access  Private/Admin
+const updateUser = asyncHandler(async (req, res) => {
+  const { username, email, role } = req.body;
+
+  const user = await User.findById(req.params.id);
+
+  if (!user) {
+    res.status(404).json({ message: "User not found" });
+    return;
+  }
+
+  const updatedUser = await User.findByIdAndUpdate(
+    req.params.id,
+    { username, email, role },
+    { new: true }
+  ).select("-password");
+
+  res.status(200).json(updatedUser);
+});
+
+// @desc    Reset user password (admin only)
+// @route   PUT /api/users/:id/reset-password
+// @access  Private/Admin
+const resetUserPassword = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.params.id);
+
+  if (!user) {
+    res.status(404).json({ message: "User not found" });
+    return;
+  }
+
+  // Hash the default password "123"
+  const salt = await bcrypt.genSalt(10);
+  const hashedPassword = await bcrypt.hash("123", salt);
+
+  await User.findByIdAndUpdate(req.params.id, { password: hashedPassword });
+
+  res.status(200).json({ message: "Password reset to default (123)" });
+});
+
 //Generate JWT
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "30d" });
 };
 
-export { registerUser, loginUser, getMe };
+export {
+  registerUser,
+  loginUser,
+  getMe,
+  getAllUsers,
+  deleteUser,
+  updateUser,
+  resetUserPassword,
+};

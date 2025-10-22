@@ -19,16 +19,20 @@ const DashboardNavbar = () => {
   const showUsersButton = user?.role === "admin" && isDesktop;
 
   return (
-    <aside className="h-screen w-64 bg-base-200 flex flex-col justify-between shadow-lg">
+    <aside className="fixed left-0 top-0 h-screen w-64 bg-base-200 flex flex-col justify-between shadow-lg z-10">
       {/* Logo/Header section */}
       <div className="flex flex-col items-center py-8">
         <div className="w-16 h-16 bg-primary rounded-full mb-2"></div>
         <span className="text-xl font-bold text-base-content">
           Placeholder Title
         </span>
-        {user && (
+        {user ? (
           <span className="text-sm text-base-content/70 mt-1">
-            Welcome, {user.username}
+            Welcome, {user.username || user.email || "User"}
+          </span>
+        ) : (
+          <span className="text-sm text-base-content/70 mt-1">
+            Loading user...
           </span>
         )}
       </div>

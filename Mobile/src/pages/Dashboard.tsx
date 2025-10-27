@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  ScrollView,
+} from 'react-native';
 
 type NavigationProps = {
   onNavigate: (page: 'landing' | 'login' | 'dashboard') => void;
@@ -8,7 +14,8 @@ type NavigationProps = {
 type DashboardPage = 'page1' | 'page2' | 'page3' | 'page4';
 
 const Dashboard: React.FC<NavigationProps> = ({ onNavigate }) => {
-  const [currentDashboardPage, setCurrentDashboardPage] = useState<DashboardPage>('page1');
+  const [currentDashboardPage, setCurrentDashboardPage] =
+    useState<DashboardPage>('page1');
 
   const renderDashboardContent = () => {
     switch (currentDashboardPage) {
@@ -17,8 +24,8 @@ const Dashboard: React.FC<NavigationProps> = ({ onNavigate }) => {
           <View style={styles.pageContent}>
             <Text style={styles.pageTitle}>Dashboard Overview</Text>
             <Text style={styles.pageText}>
-              Welcome to the XHero Siege Vape Detection System dashboard. 
-              Here you can monitor detection activities, view analytics, and manage your system.
+              Welcome to the XHero Siege Soil Monitoring System dashboard. Here
+              you can monitor soil data, view analytics, and manage your system.
             </Text>
             <View style={styles.statsContainer}>
               <View style={styles.statCard}>
@@ -37,10 +44,12 @@ const Dashboard: React.FC<NavigationProps> = ({ onNavigate }) => {
           <View style={styles.pageContent}>
             <Text style={styles.pageTitle}>Live Monitoring</Text>
             <Text style={styles.pageText}>
-              Real-time vape detection monitoring across all connected sensors.
+              Real-time soil monitoring across all connected sensors.
             </Text>
             <View style={styles.monitoringCard}>
-              <Text style={styles.monitoringStatus}>🟢 All Systems Operational</Text>
+              <Text style={styles.monitoringStatus}>
+                🟢 All Systems Operational
+              </Text>
               <Text style={styles.monitoringDetail}>5 sensors online</Text>
             </View>
           </View>
@@ -50,7 +59,7 @@ const Dashboard: React.FC<NavigationProps> = ({ onNavigate }) => {
           <View style={styles.pageContent}>
             <Text style={styles.pageTitle}>Analytics & Reports</Text>
             <Text style={styles.pageText}>
-              View detailed analytics and generate reports for your vape detection data.
+              View detailed analytics and generate reports for your soil data.
             </Text>
             <Text style={styles.analyticsText}>• Weekly detection trends</Text>
             <Text style={styles.analyticsText}>• Location-based analytics</Text>
@@ -62,16 +71,13 @@ const Dashboard: React.FC<NavigationProps> = ({ onNavigate }) => {
           <View style={styles.pageContent}>
             <Text style={styles.pageTitle}>Settings & Configuration</Text>
             <Text style={styles.pageText}>
-              Configure your vape detection system settings and preferences.
+              Configure your soil monitoring system settings and preferences.
             </Text>
             <TouchableOpacity style={styles.settingButton}>
               <Text style={styles.settingButtonText}>Sensor Configuration</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.settingButton}>
               <Text style={styles.settingButtonText}>Alert Settings</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.settingButton}>
-              <Text style={styles.settingButtonText}>User Management</Text>
             </TouchableOpacity>
           </View>
         );
@@ -85,7 +91,7 @@ const Dashboard: React.FC<NavigationProps> = ({ onNavigate }) => {
       {/* Header */}
       <View style={styles.header}>
         <Text style={styles.headerTitle}>XHero Siege Dashboard</Text>
-        <TouchableOpacity 
+        <TouchableOpacity
           style={styles.logoutButton}
           onPress={() => onNavigate('landing')}
         >
@@ -100,39 +106,71 @@ const Dashboard: React.FC<NavigationProps> = ({ onNavigate }) => {
 
       {/* Bottom Navigation */}
       <View style={styles.bottomNav}>
-        <TouchableOpacity 
-          style={[styles.tabButton, currentDashboardPage === 'page1' && styles.tabButtonActive]}
+        <TouchableOpacity
+          style={[
+            styles.tabButton,
+            currentDashboardPage === 'page1' && styles.tabButtonActive,
+          ]}
           onPress={() => setCurrentDashboardPage('page1')}
         >
-          <Text style={[styles.tabButtonText, currentDashboardPage === 'page1' && styles.tabButtonTextActive]}>
-            📊 Overview
+          <Text
+            style={[
+              styles.tabButtonText,
+              currentDashboardPage === 'page1' && styles.tabButtonTextActive,
+            ]}
+          >
+            Overview
           </Text>
         </TouchableOpacity>
-        
-        <TouchableOpacity 
-          style={[styles.tabButton, currentDashboardPage === 'page2' && styles.tabButtonActive]}
+
+        <TouchableOpacity
+          style={[
+            styles.tabButton,
+            currentDashboardPage === 'page2' && styles.tabButtonActive,
+          ]}
           onPress={() => setCurrentDashboardPage('page2')}
         >
-          <Text style={[styles.tabButtonText, currentDashboardPage === 'page2' && styles.tabButtonTextActive]}>
-            📡 Monitor
+          <Text
+            style={[
+              styles.tabButtonText,
+              currentDashboardPage === 'page2' && styles.tabButtonTextActive,
+            ]}
+          >
+            Monitor
           </Text>
         </TouchableOpacity>
-        
-        <TouchableOpacity 
-          style={[styles.tabButton, currentDashboardPage === 'page3' && styles.tabButtonActive]}
+
+        <TouchableOpacity
+          style={[
+            styles.tabButton,
+            currentDashboardPage === 'page3' && styles.tabButtonActive,
+          ]}
           onPress={() => setCurrentDashboardPage('page3')}
         >
-          <Text style={[styles.tabButtonText, currentDashboardPage === 'page3' && styles.tabButtonTextActive]}>
-            📈 Analytics
+          <Text
+            style={[
+              styles.tabButtonText,
+              currentDashboardPage === 'page3' && styles.tabButtonTextActive,
+            ]}
+          >
+            Analytics
           </Text>
         </TouchableOpacity>
-        
-        <TouchableOpacity 
-          style={[styles.tabButton, currentDashboardPage === 'page4' && styles.tabButtonActive]}
+
+        <TouchableOpacity
+          style={[
+            styles.tabButton,
+            currentDashboardPage === 'page4' && styles.tabButtonActive,
+          ]}
           onPress={() => setCurrentDashboardPage('page4')}
         >
-          <Text style={[styles.tabButtonText, currentDashboardPage === 'page4' && styles.tabButtonTextActive]}>
-            ⚙️ Settings
+          <Text
+            style={[
+              styles.tabButtonText,
+              currentDashboardPage === 'page4' && styles.tabButtonTextActive,
+            ]}
+          >
+            Settings
           </Text>
         </TouchableOpacity>
       </View>

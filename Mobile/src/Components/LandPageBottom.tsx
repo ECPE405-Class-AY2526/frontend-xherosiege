@@ -7,19 +7,19 @@ const LandPageBottom: React.FC = () => {
       <View style={styles.footerContent}>
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Services</Text>
-          <Text style={styles.link}>Vape Detection Solutions</Text>
+          <Text style={styles.link}>Soil Fertility Solutions</Text>
           <Text style={styles.link}>Installation & Integration</Text>
           <Text style={styles.link}>Maintenance & Support</Text>
           <Text style={styles.link}>Data Analytics & Reporting</Text>
         </View>
-        
+
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Company</Text>
           <Text style={styles.link}>About us</Text>
           <Text style={styles.link}>Contact</Text>
           <Text style={styles.link}>Careers</Text>
         </View>
-        
+
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Legal</Text>
           <Text style={styles.link}>Terms of use</Text>
@@ -27,10 +27,10 @@ const LandPageBottom: React.FC = () => {
           <Text style={styles.link}>Cookie policy</Text>
         </View>
       </View>
-      
+
       <View style={styles.bottomSection}>
         <Text style={styles.copyright}>
-          © 2024 XHero Siege. All rights reserved.
+          © 2025 XHero Siege. All rights reserved.
         </Text>
       </View>
     </View>

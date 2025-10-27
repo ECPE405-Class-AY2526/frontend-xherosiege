@@ -7,7 +7,8 @@ const DashboardAnalytics: React.FC = () => {
       <View style={styles.pageContent}>
         <Text style={styles.pageTitle}>Analytics & Reports</Text>
         <Text style={styles.pageText}>
-          View detailed analytics and generate reports for your vape detection data.
+          View detailed analytics and generate reports for your soil monitoring
+          data.
         </Text>
         <Text style={styles.analyticsText}>• Weekly detection trends</Text>
         <Text style={styles.analyticsText}>• Location-based analytics</Text>

@@ -36,16 +36,16 @@ const DashboardNavbar = () => {
           </span>
         )}
       </div>
-      {/* Top section: 4 placeholder buttons */}
+      {/* Top section: Dashboard navigation buttons */}
       <nav className="flex flex-col gap-2 mt-2">
         <Link to="/dashboard/1" className={btnClass("/dashboard/1")}>
-          Placeholder 1
+          Overview
         </Link>
         <Link to="/dashboard/2" className={btnClass("/dashboard/2")}>
-          Placeholder 2
+          Trends
         </Link>
         <Link to="/dashboard/3" className={btnClass("/dashboard/3")}>
-          Placeholder 3
+          Readings
         </Link>
         <Link to="/dashboard/4" className={btnClass("/dashboard/4")}>
           Placeholder 4

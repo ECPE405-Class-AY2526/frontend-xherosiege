@@ -3,16 +3,17 @@ import { View, Text, StyleSheet, ScrollView } from 'react-native';
 
 const LandPageCenter: React.FC = () => {
   return (
-    <ScrollView 
-      horizontal 
+    <ScrollView
+      horizontal
       showsHorizontalScrollIndicator={false}
       contentContainerStyle={styles.scrollContainer}
     >
       <View style={styles.card}>
         <View style={styles.cardBody}>
-          <Text style={styles.cardTitle}>History of vapes and vape detectors</Text>
+          <Text style={styles.cardTitle}>NPK Nutrients</Text>
           <Text style={styles.cardText}>
-            Learn more on the invention of vape detectors and how they have evolved over time.
+            Learn more about NPK nutrients and their importance in soil
+            fertility.
           </Text>
         </View>
         <View style={styles.cardImagePlaceholder}>
@@ -22,9 +23,9 @@ const LandPageCenter: React.FC = () => {
 
       <View style={styles.card}>
         <View style={styles.cardBody}>
-          <Text style={styles.cardTitle}>Trends in vape and vape detection</Text>
+          <Text style={styles.cardTitle}>State of agriculture</Text>
           <Text style={styles.cardText}>
-            Look into the latest news and trends about vape detectors.
+            Find about the current state of agriculture and its challenges.
           </Text>
         </View>
         <View style={styles.cardImagePlaceholder}>
@@ -34,13 +35,14 @@ const LandPageCenter: React.FC = () => {
 
       <View style={styles.card}>
         <View style={styles.cardBody}>
-          <Text style={styles.cardTitle}>How our vape detector is made</Text>
+          <Text style={styles.cardTitle}>Soil Monitoring</Text>
           <Text style={styles.cardText}>
-            Discover the technology and processes behind our innovative vape detection system.
+            Look into the latest news and trends about soil fertility
+            monitoring.
           </Text>
         </View>
         <View style={styles.cardImagePlaceholder}>
-          <Text style={styles.imagePlaceholderText}>Detector Image</Text>
+          <Text style={styles.imagePlaceholderText}>Lorem ipsum</Text>
         </View>
       </View>
     </ScrollView>

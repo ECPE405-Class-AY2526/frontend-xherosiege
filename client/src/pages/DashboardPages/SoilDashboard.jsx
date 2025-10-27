@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { io } from "socket.io-client";
-import SoilTrendChart from "../../Components/Charts/SoilTrendChart";
 import SoilComparisonChart from "../../Components/Charts/SoilComparisonChart";
 import NPKRadarChart from "../../Components/Charts/NPKRadarChart";
 
@@ -11,6 +10,7 @@ const SoilDashboard = () => {
   const [historicalData, setHistoricalData] = useState([]);
   const [stats, setStats] = useState({});
   const [loading, setLoading] = useState(true);
+  const [timeRange, setTimeRange] = useState("24h");
   const [filter, setFilter] = useState({
     location: "",
     alertLevel: "",
@@ -20,8 +20,12 @@ const SoilDashboard = () => {
     fetchSoilData();
     fetchLatestData();
     fetchStats();
-    fetchHistoricalData();
   }, [filter]);
+
+  // Separate useEffect for historical data to trigger on timeRange changes
+  useEffect(() => {
+    fetchHistoricalData();
+  }, [timeRange, filter.location]);
 
   // WebSocket connection for real-time updates
   useEffect(() => {
@@ -88,11 +92,11 @@ const SoilDashboard = () => {
   const fetchHistoricalData = async () => {
     try {
       const params = new URLSearchParams();
-      params.append("hours", "24"); // Get last 24 hours of data
+      params.append("timeRange", timeRange);
       if (filter.location) params.append("location", filter.location);
 
       const res = await axios.get(`/api/sensors/soil/historical?${params}`);
-      setHistoricalData(res.data);
+      setHistoricalData(res.data.data || res.data); // Handle both old and new response format
     } catch (error) {
       console.error("Error fetching historical data:", error);
     }
@@ -178,7 +182,37 @@ const SoilDashboard = () => {
 
       {/* Charts Section */}
       <div className="mb-6">
-        <h2 className="text-2xl font-bold mb-4">Soil Analysis Charts</h2>
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-2xl font-bold">Soil Analysis Charts</h2>
+
+          {/* Time Range Toggle */}
+          <div className="join">
+            <button
+              className={`btn join-item ${
+                timeRange === "24h" ? "btn-active" : ""
+              }`}
+              onClick={() => setTimeRange("24h")}
+            >
+              24 Hours
+            </button>
+            <button
+              className={`btn join-item ${
+                timeRange === "1w" ? "btn-active" : ""
+              }`}
+              onClick={() => setTimeRange("1w")}
+            >
+              1 Week
+            </button>
+            <button
+              className={`btn join-item ${
+                timeRange === "all" ? "btn-active" : ""
+              }`}
+              onClick={() => setTimeRange("all")}
+            >
+              All Time
+            </button>
+          </div>
+        </div>
 
         {/* Main Charts Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
@@ -187,43 +221,6 @@ const SoilDashboard = () => {
 
           {/* Location Comparison Chart */}
           <SoilComparisonChart data={soilData} />
-        </div>
-
-        {/* Trend Charts */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* pH Trend */}
-          <SoilTrendChart
-            data={historicalData}
-            parameter="ph"
-            color="#8b5cf6"
-            unit="pH"
-          />
-
-          {/* Moisture Trend */}
-          <SoilTrendChart
-            data={historicalData}
-            parameter="moisture"
-            color="#06b6d4"
-            unit="%"
-          />
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
-          {/* EC Trend */}
-          <SoilTrendChart
-            data={historicalData}
-            parameter="ec"
-            color="#f59e0b"
-            unit="µS/cm"
-          />
-
-          {/* Temperature Trend */}
-          <SoilTrendChart
-            data={historicalData}
-            parameter="temperature"
-            color="#ef4444"
-            unit="°C"
-          />
         </div>
       </div>
 
@@ -265,136 +262,6 @@ const SoilDashboard = () => {
               </select>
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* Latest Readings */}
-      <div className="card bg-base-100 shadow-xl mb-6">
-        <div className="card-body">
-          <h2 className="card-title">Latest Soil Readings</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {latestData.slice(0, 6).map((data) => (
-              <div key={data._id} className="card bg-base-200 shadow">
-                <div className="card-body p-4">
-                  <div className="flex justify-between items-start mb-2">
-                    <div>
-                      <h3 className="font-bold">{data.location}</h3>
-                      <p className="text-sm opacity-70">{data.deviceId}</p>
-                    </div>
-                    <div
-                      className={`badge ${getAlertBadgeColor(data.alertLevel)}`}
-                    >
-                      {data.alertLevel}
-                    </div>
-                  </div>
-                  <div className="space-y-1">
-                    <div className="flex justify-between">
-                      <span className="text-sm">pH:</span>
-                      <span
-                        className={`text-sm font-semibold ${
-                          getPhStatus(data.ph).color
-                        }`}
-                      >
-                        {data.ph.toFixed(1)} ({getPhStatus(data.ph).text})
-                      </span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-sm">Moisture:</span>
-                      <span
-                        className={`text-sm font-semibold ${
-                          getMoistureStatus(data.moisture).color
-                        }`}
-                      >
-                        {data.moisture.toFixed(1)}% (
-                        {getMoistureStatus(data.moisture).text})
-                      </span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-sm">EC:</span>
-                      <span className="text-sm">{data.ec} µS/cm</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-sm">NPK:</span>
-                      <span className="text-sm">
-                        {data.npk.nitrogen}-{data.npk.phosphorus}-
-                        {data.npk.potassium}
-                      </span>
-                    </div>
-                    <p className="text-xs opacity-50 mt-2">
-                      {new Date(data.timestamp).toLocaleString()}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Soil Data Table */}
-      <div className="card bg-base-100 shadow-xl">
-        <div className="card-body">
-          <h2 className="card-title">All Soil Data</h2>
-
-          {loading ? (
-            <div className="flex justify-center py-8">
-              <span className="loading loading-spinner loading-lg"></span>
-            </div>
-          ) : (
-            <div className="overflow-x-auto">
-              <table className="table table-zebra">
-                <thead>
-                  <tr>
-                    <th>Device ID</th>
-                    <th>Location</th>
-                    <th>pH</th>
-                    <th>Moisture (%)</th>
-                    <th>EC (µS/cm)</th>
-                    <th>NPK</th>
-                    <th>Temp (°C)</th>
-                    <th>Alert</th>
-                    <th>Timestamp</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {soilData.map((data) => (
-                    <tr key={data._id}>
-                      <td>{data.deviceId}</td>
-                      <td>{data.location}</td>
-                      <td>
-                        <span className={getPhStatus(data.ph).color}>
-                          {data.ph.toFixed(1)}
-                        </span>
-                      </td>
-                      <td>
-                        <span
-                          className={getMoistureStatus(data.moisture).color}
-                        >
-                          {data.moisture.toFixed(1)}%
-                        </span>
-                      </td>
-                      <td>{data.ec}</td>
-                      <td>
-                        {data.npk.nitrogen}-{data.npk.phosphorus}-
-                        {data.npk.potassium}
-                      </td>
-                      <td>{data.temperature.toFixed(1)}°C</td>
-                      <td>
-                        <div
-                          className={`badge ${getAlertBadgeColor(
-                            data.alertLevel
-                          )}`}
-                        >
-                          {data.alertLevel}
-                        </div>
-                      </td>
-                      <td>{new Date(data.timestamp).toLocaleString()}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          )}
         </div>
       </div>
     </div>

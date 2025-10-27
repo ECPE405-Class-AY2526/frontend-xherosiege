@@ -1,5 +1,11 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  ScrollView,
+} from 'react-native';
 
 const DashboardSettings: React.FC = () => {
   return (
@@ -14,9 +20,6 @@ const DashboardSettings: React.FC = () => {
         </TouchableOpacity>
         <TouchableOpacity style={styles.settingButton}>
           <Text style={styles.settingButtonText}>Alert Settings</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.settingButton}>
-          <Text style={styles.settingButtonText}>User Management</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>

@@ -7,10 +7,12 @@ const DashboardMonitor: React.FC = () => {
       <View style={styles.pageContent}>
         <Text style={styles.pageTitle}>Live Monitoring</Text>
         <Text style={styles.pageText}>
-          Real-time vape detection monitoring across all connected sensors.
+          Real-time soil monitoring across all connected sensors.
         </Text>
         <View style={styles.monitoringCard}>
-          <Text style={styles.monitoringStatus}>🟢 All Systems Operational</Text>
+          <Text style={styles.monitoringStatus}>
+            🟢 All Systems Operational
+          </Text>
           <Text style={styles.monitoringDetail}>5 sensors online</Text>
         </View>
       </View>

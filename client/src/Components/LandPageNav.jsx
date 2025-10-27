@@ -21,6 +21,11 @@ const LandPageNav = () => {
               Sign up
             </button>
           </Link>
+          <Link to="/login">
+            <button className="btn btn-outline text-white rounded-full px-6 py-2 font-medium">
+              Login
+            </button>
+          </Link>
           <div className="w-10 h-10 rounded-full bg-black flex items-center justify-center"></div>
         </div>
       </div>

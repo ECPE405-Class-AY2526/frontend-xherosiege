@@ -7,8 +7,9 @@ const DashboardOverview: React.FC = () => {
       <View style={styles.pageContent}>
         <Text style={styles.pageTitle}>Dashboard Overview</Text>
         <Text style={styles.pageText}>
-          Welcome to the XHero Siege Vape Detection System dashboard. 
-          Here you can monitor detection activities, view analytics, and manage your system.
+          Welcome to the XHero Siege Soil Monitoring System dashboard. Here you
+          can monitor detection activities, view analytics, and manage your
+          system.
         </Text>
         <View style={styles.statsContainer}>
           <View style={styles.statCard}>

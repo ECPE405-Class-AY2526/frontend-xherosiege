@@ -10,25 +10,32 @@ const LandPageParagraph: React.FC = () => {
   const navigation = useNavigation<NavigationProp>();
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>
-        What are vape detectors and how do they impact us?
-      </Text>
-      
+      <Text style={styles.title}>What is Soil Fertility Monitoring?</Text>
+
       <Text style={styles.paragraph}>
-        E-cigarettes, or vapes, have rapidly grown in popularity, especially among young people, due to their sleek designs, 
-        wide variety of flavors, and accessibility. While they are often marketed as a safer alternative to traditional cigarettes, 
-        studies show that vaping still exposes users to harmful chemicals such as nicotine and toxic compounds that can damage the 
-        lungs and heart. In the Philippines, vape use among adolescents has significantly increased, raising concerns about addiction 
-        and the risk of transitioning to regular smoking. Cases of vape-related illnesses and even deaths highlight the serious health 
-        dangers linked to e-cigarettes. These findings emphasize the urgent need for awareness and regulation to protect public health.
+        Soil plays a vital role in agriculture and food production, yet it is
+        often overlooked despite being the foundation of every crop. In the
+        Philippines, many farmlands suffer from low to moderate soil fertility
+        due to unsustainable farming practices, natural disasters, and the
+        overuse of synthetic fertilizers. These challenges lead to declining
+        crop yields, increased production costs, and reduced income for farmers.
+        Our study aims to address this issue through the development of a
+        machine-learning powered soil fertility monitoring system with automated
+        fertigation.
       </Text>
-      
+
       <Text style={styles.paragraph}>
-        Our product aims to address the growing concern of vaping in schools by providing a reliable and efficient way to detect 
-        vape usage. It will detect and notify proper authorities when vaping is detected, ensuring a swift response to this issue.
+        This innovation combines IoT technology, real-time soil analysis, and
+        smart nutrient management to help farmers make data-driven decisions.
+        The system detects soil conditions such as pH, moisture, electrical
+        conductivity, and NPK levels, then automatically applies the right
+        amount of fertilizer when needed. By integrating advanced technology
+        with sustainable agriculture, our project seeks to improve crop
+        productivity, reduce resource waste, and promote long-term soil health —
+        empowering farmers and contributing to food security in the Philippines.
       </Text>
-      
-      <TouchableOpacity 
+
+      <TouchableOpacity
         style={styles.joinButton}
         onPress={() => navigation.navigate('Login')}
       >

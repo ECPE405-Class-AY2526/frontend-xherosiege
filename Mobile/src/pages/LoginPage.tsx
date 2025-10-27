@@ -49,7 +49,7 @@ const LoginPage: React.FC = () => {
     >
       <View style={styles.content}>
         <Text style={styles.title}>Welcome to XHero Siege</Text>
-        <Text style={styles.subtitle}>Vape Detection System</Text>
+        <Text style={styles.subtitle}>Soil Monitoring System</Text>
 
         <View style={styles.form}>
           <TextInput

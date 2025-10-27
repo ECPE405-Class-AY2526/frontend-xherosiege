@@ -4,6 +4,20 @@ import axios from "axios";
 // Set up axios defaults
 axios.defaults.baseURL = "http://localhost:5001";
 
+// Add axios interceptor to automatically include token in all requests
+axios.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem("token");
+    if (token && token !== "") {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+
 const useAuthStore = create((set, get) => ({
   // State
   user: null,
@@ -21,9 +35,6 @@ const useAuthStore = create((set, get) => ({
       const { token, ...userData } = res.data;
 
       localStorage.setItem("token", token);
-
-      // Set axios default header for future requests
-      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
       set({
         token,
@@ -65,8 +76,6 @@ const useAuthStore = create((set, get) => ({
 
   logout: () => {
     localStorage.removeItem("token");
-    // Remove axios default header
-    delete axios.defaults.headers.common["Authorization"];
     set({
       token: "",
       user: null,
@@ -78,12 +87,7 @@ const useAuthStore = create((set, get) => ({
     const { token } = get();
     if (token && token !== "") {
       try {
-        // Set axios default header
-        axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-
-        const res = await axios.get("/api/users/me", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const res = await axios.get("/api/users/me");
         console.log("InitializeAuth response:", res.data);
         set({ user: res.data });
       } catch (err) {

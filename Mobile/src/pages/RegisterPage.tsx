@@ -35,11 +35,6 @@ const RegisterPage: React.FC = () => {
       return;
     }
 
-    if (password.length < 6) {
-      Alert.alert('Error', 'Password must be at least 6 characters');
-      return;
-    }
-
     const success = await register(username, email, password);
     if (success) {
       Alert.alert('Success', 'Registration successful!');
@@ -56,7 +51,6 @@ const RegisterPage: React.FC = () => {
     >
       <View style={styles.content}>
         <Text style={styles.title}>Create Account</Text>
-        <Text style={styles.subtitle}>Join XHeroSiege today</Text>
 
         <View style={styles.form}>
           <TextInput
@@ -130,7 +124,7 @@ const RegisterPage: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#0a0a0a',
+    backgroundColor: '#ffffff',
   },
   content: {
     flex: 1,
@@ -139,11 +133,11 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
   },
   title: {
-    fontSize: 36,
+    fontSize: 32,
     fontWeight: 'bold',
-    color: '#ffffff',
+    color: '#000000',
     textAlign: 'center',
-    marginBottom: 8,
+    marginBottom: 25,
     letterSpacing: -0.5,
   },
   subtitle: {
@@ -156,15 +150,14 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   input: {
-    backgroundColor: '#1a1a1a',
-    borderWidth: 1,
-    borderColor: '#333333',
+    backgroundColor: '#f8f9fa',
+    borderWidth: 2,
+    borderColor: '#e9ecef',
     borderRadius: 12,
     paddingHorizontal: 20,
-    paddingVertical: 18,
+    paddingVertical: 16,
     fontSize: 16,
-    color: '#ffffff',
-    marginBottom: 16,
+    marginBottom: 20,
     minHeight: 56,
   },
   registerButton: {

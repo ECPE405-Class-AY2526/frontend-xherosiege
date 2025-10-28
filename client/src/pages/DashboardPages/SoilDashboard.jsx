@@ -146,14 +146,14 @@ const SoilDashboard = () => {
 
       {/* Statistics Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-        <div className="card bg-base-100 shadow-xl">
+        <div className="card bg-base-100 shadow-xl border-2 border-primary">
           <div className="card-body p-4">
             <h3 className="card-title text-sm">Average pH</h3>
             <p className="text-2xl font-bold">{stats.avgPh?.toFixed(2) || 0}</p>
             <p className="text-xs opacity-50">Soil acidity level</p>
           </div>
         </div>
-        <div className="card bg-base-100 shadow-xl">
+        <div className="card bg-base-100 shadow-xl border-2 border-info">
           <div className="card-body p-4">
             <h3 className="card-title text-sm">Average Moisture</h3>
             <p className="text-2xl font-bold">
@@ -162,14 +162,14 @@ const SoilDashboard = () => {
             <p className="text-xs opacity-50">Soil water content</p>
           </div>
         </div>
-        <div className="card bg-base-100 shadow-xl">
+        <div className="card bg-base-100 shadow-xl border-2 border-secondary">
           <div className="card-body p-4">
             <h3 className="card-title text-sm">Average EC</h3>
             <p className="text-2xl font-bold">{stats.avgEc?.toFixed(0) || 0}</p>
             <p className="text-xs opacity-50">µS/cm conductivity</p>
           </div>
         </div>
-        <div className="card bg-base-100 shadow-xl">
+        <div className="card bg-base-100 shadow-xl border-2 border-accent">
           <div className="card-body p-4">
             <h3 className="card-title text-sm">Temperature</h3>
             <p className="text-2xl font-bold">
@@ -189,7 +189,7 @@ const SoilDashboard = () => {
           <div className="join">
             <button
               className={`btn join-item ${
-                timeRange === "24h" ? "btn-active" : ""
+                timeRange === "24h" ? "btn-primary" : ""
               }`}
               onClick={() => setTimeRange("24h")}
             >
@@ -197,7 +197,7 @@ const SoilDashboard = () => {
             </button>
             <button
               className={`btn join-item ${
-                timeRange === "1w" ? "btn-active" : ""
+                timeRange === "1w" ? "btn-primary" : ""
               }`}
               onClick={() => setTimeRange("1w")}
             >
@@ -205,7 +205,7 @@ const SoilDashboard = () => {
             </button>
             <button
               className={`btn join-item ${
-                timeRange === "all" ? "btn-active" : ""
+                timeRange === "all" ? "btn-primary" : ""
               }`}
               onClick={() => setTimeRange("all")}
             >

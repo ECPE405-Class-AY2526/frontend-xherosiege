@@ -21,7 +21,20 @@ ChartJS.register(
   Legend
 );
 
-const SoilTrendChart = ({ data, parameter, color = "#8884d8", unit = "" }) => {
+const SoilTrendChart = ({ data, parameter, color = "#8884d8", unit = "", borderColor = "primary" }) => {
+  // Map borderColor to full Tailwind classes
+  const borderClasses = {
+    primary: "border-primary",
+    secondary: "border-secondary",
+    accent: "border-accent",
+    info: "border-info",
+    success: "border-success",
+    warning: "border-warning",
+    error: "border-error",
+  };
+
+  const borderClass = borderClasses[borderColor] || "border-primary";
+
   // Prepare chart data
   const chartData = {
     labels: data.map((item) =>
@@ -83,7 +96,7 @@ const SoilTrendChart = ({ data, parameter, color = "#8884d8", unit = "" }) => {
   };
 
   return (
-    <div className="card bg-base-100 shadow-xl">
+    <div className={`card bg-base-100 shadow-xl border-2 ${borderClass}`}>
       <div className="card-body">
         <Line data={chartData} options={options} />
       </div>

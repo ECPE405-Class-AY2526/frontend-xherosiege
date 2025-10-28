@@ -152,7 +152,7 @@ const DashboardPage3 = () => {
           <h2 className="card-title">Latest Soil Readings</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {latestData.slice(0, 6).map((data) => (
-              <div key={data._id} className="card bg-base-200 shadow">
+              <div key={data._id} className="card bg-base-200 shadow border-2 border-gray-300">
                 <div className="card-body p-4">
                   <div className="flex justify-between items-start mb-2">
                     <div>

@@ -68,7 +68,7 @@ const DashboardPage2 = () => {
           <div className="join">
             <button
               className={`btn join-item ${
-                timeRange === "24h" ? "btn-active" : ""
+                timeRange === "24h" ? "btn-primary" : ""
               }`}
               onClick={() => setTimeRange("24h")}
             >
@@ -76,7 +76,7 @@ const DashboardPage2 = () => {
             </button>
             <button
               className={`btn join-item ${
-                timeRange === "1w" ? "btn-active" : ""
+                timeRange === "1w" ? "btn-primary" : ""
               }`}
               onClick={() => setTimeRange("1w")}
             >
@@ -84,7 +84,7 @@ const DashboardPage2 = () => {
             </button>
             <button
               className={`btn join-item ${
-                timeRange === "all" ? "btn-active" : ""
+                timeRange === "all" ? "btn-primary" : ""
               }`}
               onClick={() => setTimeRange("all")}
             >
@@ -123,6 +123,7 @@ const DashboardPage2 = () => {
             parameter="ph"
             color="#8b5cf6"
             unit="pH"
+            borderColor="primary"
           />
 
           {/* Moisture Trend */}
@@ -131,6 +132,7 @@ const DashboardPage2 = () => {
             parameter="moisture"
             color="#06b6d4"
             unit="%"
+            borderColor="info"
           />
         </div>
 
@@ -141,6 +143,7 @@ const DashboardPage2 = () => {
             parameter="ec"
             color="#f59e0b"
             unit="µS/cm"
+            borderColor="warning"
           />
 
           {/* Temperature Trend */}
@@ -149,6 +152,7 @@ const DashboardPage2 = () => {
             parameter="temperature"
             color="#ef4444"
             unit="°C"
+            borderColor="error"
           />
         </div>
       </div>

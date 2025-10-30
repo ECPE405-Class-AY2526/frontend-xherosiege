@@ -6,6 +6,8 @@ import SoilDashboard from "./DashboardPages/SoilDashboard";
 import DashboardPage2 from "./DashboardPages/DashboardPage2";
 import DashboardPage3 from "./DashboardPages/DashboardPage3";
 import DashboardPage4 from "./DashboardPages/DashboardPage4";
+import EmbeddedPage from "./DashboardPages/EmbeddedPage";
+import ActuatorPage from "./DashboardPages/ActuatorPage";
 import UsersPage from "./UsersPage";
 
 const Dashboard = () => {
@@ -15,10 +17,12 @@ const Dashboard = () => {
       <main className="ml-64 bg-base-100 min-h-screen">
         <Routes>
           <Route path="/" element={<SoilDashboard />} />
+          {/* <Route path="/" element={<SoilDashboard />} />
           <Route path="1" element={<SoilDashboard />} />
           <Route path="2" element={<DashboardPage2 />} />
-          <Route path="3" element={<DashboardPage3 />} />
-          <Route path="4" element={<DashboardPage4 />} />
+          <Route path="3" element={<DashboardPage3 />} /> */}
+          <Route path="embedded" element={<EmbeddedPage />} />
+          <Route path="actuators" element={<ActuatorPage />} />
           <Route path="users" element={<UsersPage />} />
         </Routes>
       </main>

@@ -19,7 +19,7 @@ const LoginPage = () => {
     } else {
       setError("");
       toast.success("Login successful!");
-      navigate("/dashboard");
+      navigate("/dashboard/embedded");
       // you may declare or place the role in this line. once you have it from the backend
     }
   };

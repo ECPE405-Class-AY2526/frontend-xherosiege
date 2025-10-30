@@ -38,7 +38,7 @@ const DashboardNavbar = () => {
       </div>
       {/* Top section: Dashboard navigation buttons */}
       <nav className="flex flex-col gap-2 mt-2">
-        <Link to="/dashboard/1" className={btnClass("/dashboard/1")}>
+        {/* <Link to="/dashboard/1" className={btnClass("/dashboard/1")}>
           Overview
         </Link>
         <Link to="/dashboard/2" className={btnClass("/dashboard/2")}>
@@ -46,9 +46,18 @@ const DashboardNavbar = () => {
         </Link>
         <Link to="/dashboard/3" className={btnClass("/dashboard/3")}>
           Readings
+        </Link> */}
+        <Link
+          to="/dashboard/embedded"
+          className={btnClass("/dashboard/embedded")}
+        >
+          Embedded
         </Link>
-        <Link to="/dashboard/4" className={btnClass("/dashboard/4")}>
-          Placeholder 4
+        <Link
+          to="/dashboard/actuators"
+          className={btnClass("/dashboard/actuators")}
+        >
+          Actuators
         </Link>
         {showUsersButton && (
           <Link to="/dashboard/users" className={btnClass("/dashboard/users")}>
